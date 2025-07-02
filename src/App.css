@@ -243,3 +243,96 @@
 .hero-3d > * {
   transform: translateZ(20px);
 }
+
+/* Blog specific styles */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.prose {
+  color: #e5e7eb;
+  max-width: none;
+}
+
+.prose h2 {
+  color: #ffffff;
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.prose h3 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose p {
+  margin-bottom: 1.25rem;
+  line-height: 1.75;
+  color: #d1d5db;
+}
+
+.prose strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.prose ul {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+  color: #d1d5db;
+}
+
+.prose blockquote {
+  border-left: 4px solid #8b5cf6;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #9ca3af;
+  background: rgba(139, 92, 246, 0.1);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.prose code {
+  background: rgba(139, 92, 246, 0.2);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  color: #e5e7eb;
+}
+
+.prose pre {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+}

@@ -43,6 +43,7 @@ const Header = () => {
               { name: 'Hizmetler', id: 'services' },
               { name: 'Hakkımızda', id: 'about' },
               { name: 'Portföy', id: 'portfolio' },
+              { name: 'Blog', id: 'blog' },
               { name: 'İletişim', id: 'contact' }
             ].map((item) => (
               <button
@@ -74,6 +75,7 @@ const Header = () => {
                 { name: 'Hizmetler', id: 'services' },
                 { name: 'Hakkımızda', id: 'about' },
                 { name: 'Portföy', id: 'portfolio' },
+                { name: 'Blog', id: 'blog' },
                 { name: 'İletişim', id: 'contact' }
               ].map((item) => (
                 <button
