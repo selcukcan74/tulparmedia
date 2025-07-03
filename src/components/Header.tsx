@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Settings } from 'lucide-react';
 
-const Header = () => {
+interface HeaderProps {
+  onAdminClick?: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onAdminClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -57,13 +61,27 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-white z-50"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          <div className="flex items-center space-x-4">
+            {/* Admin Button */}
+            {onAdminClick && (
+              <button
+                onClick={onAdminClick}
+                className="hidden md:flex items-center space-x-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-gray-300 hover:text-white"
+                title="Admin Panel"
+              >
+                <Settings className="h-4 w-4" />
+                <span>Admin</span>
+              </button>
+            )}
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden text-white z-50"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -86,6 +104,17 @@ const Header = () => {
                   {item.name}
                 </button>
               ))}
+              {onAdminClick && (
+                <button
+                  onClick={() => {
+                    onAdminClick();
+                    setIsMenuOpen(false);
+                  }}
+                  className="block w-full text-left px-6 py-3 text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
+                >
+                  Admin Panel
+                </button>
+              )}
             </nav>
           </div>
         )}
