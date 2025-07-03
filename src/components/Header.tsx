@@ -26,6 +26,11 @@ const Header: React.FC<HeaderProps> = ({ onAdminClick }) => {
     setIsMenuOpen(false);
   };
 
+  const scrollToHome = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'glass-effect' : 'bg-transparent'
@@ -33,17 +38,22 @@ const Header: React.FC<HeaderProps> = ({ onAdminClick }) => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <img 
-              src="/beyaz logo.png" 
-              alt="Tulpar Media Logo" 
-              className="h-12 w-auto object-contain filter brightness-110 hover:scale-105 transition-transform duration-300"
-            />
+            <button 
+              onClick={scrollToHome}
+              className="hover:scale-105 transition-transform duration-300"
+            >
+              <img 
+                src="/beyaz logo.png" 
+                alt="Tulpar Media Logo" 
+                className="h-12 w-auto object-contain filter brightness-110"
+              />
+            </button>
           </div>
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex space-x-8">
             {[
-              { name: 'Ana Sayfa', id: 'home' },
+              { name: 'Ana Sayfa', id: 'home', isHome: true },
               { name: 'Hizmetler', id: 'services' },
               { name: 'Hakkımızda', id: 'about' },
               { name: 'Portföy', id: 'portfolio' },
@@ -52,7 +62,7 @@ const Header: React.FC<HeaderProps> = ({ onAdminClick }) => {
             ].map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => item.isHome ? scrollToHome() : scrollToSection(item.id)}
                 className="text-gray-300 hover:text-white transition-colors relative group"
               >
                 {item.name}
@@ -89,7 +99,7 @@ const Header: React.FC<HeaderProps> = ({ onAdminClick }) => {
           <div className="md:hidden absolute top-full left-0 right-0 glass-effect rounded-b-lg">
             <nav className="py-4">
               {[
-                { name: 'Ana Sayfa', id: 'home' },
+                { name: 'Ana Sayfa', id: 'home', isHome: true },
                 { name: 'Hizmetler', id: 'services' },
                 { name: 'Hakkımızda', id: 'about' },
                 { name: 'Portföy', id: 'portfolio' },
@@ -98,7 +108,7 @@ const Header: React.FC<HeaderProps> = ({ onAdminClick }) => {
               ].map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => item.isHome ? scrollToHome() : scrollToSection(item.id)}
                   className="block w-full text-left px-6 py-3 text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
                 >
                   {item.name}
